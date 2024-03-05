@@ -21,7 +21,7 @@ const ListItems = async () => {
   }
   const items = await getData();
   return (
-    <div className="grid grid-cols-4 gap-5">
+    <div className="grid md:grid-cols-4 grid-cols-2 gap-5">
       {items.map((item: ItemsType) => (
         <ItemCard key={item.id} item={item} />
       ))}
