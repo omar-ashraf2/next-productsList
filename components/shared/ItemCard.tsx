@@ -5,15 +5,15 @@ import {
   CardHeader,
   CardTitle,
 } from "@/components/ui/card";
+import { ItemType } from "@/types/ItemType";
 import { PlusIcon } from "lucide-react";
-import { Button } from "../ui/button";
 import Image from "next/image";
-import { Separator } from "../ui/separator";
-import type { ItemsType } from "./ListItems";
 import { FC } from "react";
+import { Button } from "../ui/button";
+import { Separator } from "../ui/separator";
 
 type ItemCardProps = {
-  item: ItemsType;
+  item: ItemType;
 };
 
 const ItemCard: FC<ItemCardProps> = ({ item }) => {
@@ -39,7 +39,7 @@ const ItemCard: FC<ItemCardProps> = ({ item }) => {
       </div>
       <Separator />
       <CardHeader>
-        <CardTitle className="mb-3">{truncateString(title, 25)}</CardTitle>
+        <CardTitle className="mb-3">{truncateString(title, 20)}</CardTitle>
         <CardDescription>{truncateString(description, 50)}</CardDescription>
       </CardHeader>
       <CardContent className="flex justify-between">
