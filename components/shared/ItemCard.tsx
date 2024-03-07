@@ -11,6 +11,7 @@ import Image from "next/image";
 import { FC } from "react";
 import { Button } from "../ui/button";
 import { Separator } from "../ui/separator";
+import { useCart } from "@/context/CartContext";
 
 type ItemCardProps = {
   item: ItemType;
@@ -18,6 +19,7 @@ type ItemCardProps = {
 
 const ItemCard: FC<ItemCardProps> = ({ item }) => {
   const { title, description, image, price } = item;
+  const { addToCart } = useCart();
 
   const truncateString = (str: string, maxLength: number) => {
     if (str.length > maxLength) {
@@ -44,7 +46,11 @@ const ItemCard: FC<ItemCardProps> = ({ item }) => {
       </CardHeader>
       <CardContent className="flex justify-between">
         <p>${price}</p>
-        <Button className="rounded-full" size="icon">
+        <Button
+          className="rounded-full"
+          size="icon"
+          onClick={() => addToCart(item)}
+        >
           <PlusIcon />
         </Button>
       </CardContent>

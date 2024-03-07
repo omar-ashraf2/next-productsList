@@ -1,26 +1,24 @@
-import { ShoppingBasketIcon } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import {
   Drawer,
-  DrawerClose,
   DrawerContent,
   DrawerDescription,
-  DrawerFooter,
   DrawerHeader,
   DrawerTitle,
   DrawerTrigger,
 } from "@/components/ui/drawer";
+import { useCart } from "@/context/CartContext";
+import { MinusIcon, PlusIcon, ShoppingBasketIcon } from "lucide-react";
 
-type CartProps = {
-  itemCount: number;
-};
+const Cart = () => {
+  const { cartItems, total } = useCart();
+  // console.log(cartItems);
 
-const Cart = ({ itemCount }: CartProps) => {
   return (
     <div className="relative">
       <Drawer>
-        <div className="absolute w-5 h-5 -top-2 -right-2 z-10 bg-red-400 rounded-full p-1 text-xs text-center text-white">
-          {itemCount}
+        <div className="absolute w-5 h-5 -top-2 -right-2 z-10 bg-red-400 rounded-full text-xs flex justify-center items-center">
+          <span className="text-white">{total}</span>
         </div>
         <DrawerTrigger asChild>
           <Button variant="outline">
@@ -28,7 +26,7 @@ const Cart = ({ itemCount }: CartProps) => {
           </Button>
         </DrawerTrigger>
         <DrawerContent>
-          <div className="mx-auto w-full max-w-sm">
+          <div className="w-full max-w-sm">
             <DrawerHeader>
               <DrawerTitle>Move Goal</DrawerTitle>
               <DrawerDescription>
@@ -43,6 +41,7 @@ const Cart = ({ itemCount }: CartProps) => {
                   className="h-8 w-8 shrink-0 rounded-full"
                 >
                   <span className="sr-only">Decrease</span>
+                  <MinusIcon />
                 </Button>
                 <div className="flex-1 text-center">
                   <div className="text-7xl font-bold tracking-tighter">
@@ -58,16 +57,11 @@ const Cart = ({ itemCount }: CartProps) => {
                   className="h-8 w-8 shrink-0 rounded-full"
                 >
                   <span className="sr-only">Increase</span>
+                  <PlusIcon />
                 </Button>
               </div>
               <div className="mt-3 h-[120px]">test</div>
             </div>
-            <DrawerFooter>
-              <Button>Submit</Button>
-              <DrawerClose asChild>
-                <Button variant="outline">Cancel</Button>
-              </DrawerClose>
-            </DrawerFooter>
           </div>
         </DrawerContent>
       </Drawer>

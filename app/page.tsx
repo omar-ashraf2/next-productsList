@@ -9,8 +9,7 @@ import { Separator } from "@/components/ui/separator";
 import fetchProducts from "@/services/ProductService";
 import { ItemType } from "@/types/ItemType";
 
-export default function Home() {
-  const itemCount = 5;
+const Home = () => {
   const [products, setProducts] = useState<ItemType[]>([]);
   const [filteredProducts, setFilteredProducts] = useState<ItemType[]>([]);
 
@@ -42,7 +41,7 @@ export default function Home() {
       <section className="flex justify-between">
         <div className="flex gap-4 items-center">
           <SortBy />
-          <Cart itemCount={itemCount} />
+          <Cart />
         </div>
         <SearchBar items={products} setFilteredItems={setFilteredProducts} />
       </section>
@@ -52,4 +51,5 @@ export default function Home() {
       </section>
     </main>
   );
-}
+};
+export default Home;
