@@ -1,36 +1,66 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# Products List Application
+
+Welcome to the Products List Application! This web application allows users to explore a wide selection of products, filter them by price range, and sort them by price or name. Users can also search for specific items using the search bar and add them to the cart for purchase.
+
+## Demo
+
+You can access the live demo of the application [here](https://65ed24e10045e6183d6f0b90--products-list-next.netlify.app/).
+
+## Technologies Used
+
+The Products List Application is built using the following technologies:
+
+- **Next.js**
+- **React**
+- **TypeScript**
+- **Tailwind CSS**
+- **Context API**
+- **Shadcn UI**
+
+## Features
+
+The key features of the Products List Application include:
+
+- Viewing a list of products with details such as title, description, image, and price.
+- Filtering products by price range to narrow down the search results.
+- Sorting products by price or name to organize the list based on user preferences.
+- Searching for specific items using the search bar to quickly find desired products.
+- Adding items to the cart for purchase and managing the cart contents.
 
 ## Getting Started
 
-First, run the development server:
+To run the application locally, follow these steps:
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+1. Clone the repository to your local machine:
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+   ```
+   git clone <repository-url>
+   ```
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+2. Navigate to the project directory:
 
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
+   ```
+   cd products-list
+   ```
 
-## Learn More
+3. Install dependencies:
 
-To learn more about Next.js, take a look at the following resources:
+   ```
+   npm install
+   ```
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+4. Start the development server:
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
+   ```
+   npm run dev
+   ```
 
-## Deploy on Vercel
+5. Open your browser and visit `http://localhost:3000` to view the application.
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+## Contributing
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+Contributions to the Products List Application are welcome! If you find any issues or have suggestions for improvements, please feel free to open an issue or submit a pull request.
+
+## License
+
+This project is created by [https://github.com/omar-ashraf2/next-productsList](OmarAshraf).
