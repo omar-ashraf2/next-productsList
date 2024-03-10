@@ -63,4 +63,4 @@ Contributions to the Products List Application are welcome! If you find any issu
 
 ## License
 
-This project is created by [https://github.com/omar-ashraf2/next-productsList](OmarAshraf).
+This project is created by [Omar Ashraf](https://github.com/omar-ashraf2/next-productsList).
