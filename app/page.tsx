@@ -8,6 +8,7 @@ import SearchBar from "@/components/ui/SearchBar";
 import { Separator } from "@/components/ui/separator";
 import fetchProducts from "@/services/ProductService";
 import { ItemType } from "@/types/ItemType";
+import PriceRangeFilter from "@/components/shared/PriceRangeFilter";
 
 const Home = () => {
   const [products, setProducts] = useState<ItemType[]>([]);
@@ -27,8 +28,19 @@ const Home = () => {
     fetchData();
   }, []);
 
+  // Function to handle sorting based on selected criteria
+  const handleSortChange = (criteria: string) => {
+    let sortedList = [...filteredProducts];
+    if (criteria === "price") {
+      sortedList.sort((a, b) => a.price - b.price);
+    } else if (criteria === "name") {
+      sortedList.sort((a, b) => a.title.localeCompare(b.title));
+    }
+    setFilteredProducts(sortedList);
+  };
+
   return (
-    <main className="min-h-screen max-w-screen-2xl mx-auto px-24 py-16 shadow-lg">
+    <main className="min-h-screen md:max-w-screen-2xl sm:max-w-screen-sm max-w-screen-md md:px-24 md:py-16 px-12 py-8 shadow-lg mx-auto ">
       <header className="text-center mb-10">
         <h1 className="text-6xl mb-7">Explore Our Products</h1>
         <h2 className="text-gray-500 max-w-3xl mx-auto">
@@ -38,10 +50,14 @@ const Home = () => {
           needs.
         </h2>
       </header>
-      <section className="flex justify-between">
+      <section className="flex md:flex-row flex-col gap-4 items-center md:justify-between">
         <div className="flex gap-4 items-center">
-          <SortBy />
           <Cart />
+          <SortBy onSortChange={handleSortChange} />
+          <PriceRangeFilter
+            items={products}
+            setFilteredItems={setFilteredProducts}
+          />
         </div>
         <SearchBar items={products} setFilteredItems={setFilteredProducts} />
       </section>

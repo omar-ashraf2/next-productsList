@@ -1,7 +1,4 @@
-"use client";
-
 import * as React from "react";
-
 import { Button } from "@/components/ui/button";
 import {
   DropdownMenu,
@@ -13,8 +10,17 @@ import {
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
 
-const SortBy = () => {
-  const [position, setPosition] = React.useState("bottom");
+type SortByProps = {
+  onSortChange: (criteria: string) => void;
+};
+
+const SortBy: React.FC<SortByProps> = ({ onSortChange }) => {
+  const [criteria, setCriteria] = React.useState("price");
+
+  const handleCriteriaChange = (newCriteria: string) => {
+    setCriteria(newCriteria);
+    onSortChange(newCriteria);
+  };
 
   return (
     <DropdownMenu>
@@ -22,25 +28,18 @@ const SortBy = () => {
         <Button variant="outline">SORT BY: </Button>
       </DropdownMenuTrigger>
       <DropdownMenuContent className="w-56">
-        <DropdownMenuLabel>Price</DropdownMenuLabel>
+        <DropdownMenuLabel>Sort By</DropdownMenuLabel>
         <DropdownMenuSeparator />
-        <DropdownMenuRadioGroup value={position} onValueChange={setPosition}>
-          <DropdownMenuRadioItem
-            value="High To Low
-"
-          >
-            Hight To Low
-          </DropdownMenuRadioItem>
-          <DropdownMenuRadioItem
-            value="Low To High
-"
-          >
-            Low To High
-          </DropdownMenuRadioItem>
-          <DropdownMenuRadioItem value="right">Right</DropdownMenuRadioItem>
+        <DropdownMenuRadioGroup
+          value={criteria}
+          onValueChange={handleCriteriaChange}
+        >
+          <DropdownMenuRadioItem value="price">Price</DropdownMenuRadioItem>
+          <DropdownMenuRadioItem value="name">Name</DropdownMenuRadioItem>
         </DropdownMenuRadioGroup>
       </DropdownMenuContent>
     </DropdownMenu>
   );
 };
+
 export default SortBy;

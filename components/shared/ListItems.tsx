@@ -7,7 +7,7 @@ type ListItemsProps = {
 
 const ListItems: React.FC<ListItemsProps> = ({ items }) => {
   return (
-    <div className="grid md:grid-cols-4 grid-cols-2 gap-5">
+    <div className="grid lg:grid-cols-4  sm:grid-cols-2 gap-5">
       {items.map((item: ItemType) => (
         <ItemCard key={item.id} item={item} />
       ))}

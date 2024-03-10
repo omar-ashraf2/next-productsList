@@ -37,28 +37,38 @@ DrawerOverlay.displayName = DrawerPrimitive.Overlay.displayName;
 
 const DrawerContent = React.forwardRef<
   React.ElementRef<typeof DrawerPrimitive.Content>,
-  React.ComponentPropsWithoutRef<typeof DrawerPrimitive.Content>
+  React.ComponentPropsWithoutRef<typeof DrawerPrimitive.Content> & {
+    totalprice?: number;
+  }
 >(({ className, children, ...props }, ref) => (
-  <DrawerPortal>
-    <DrawerOverlay />
-    <DrawerPrimitive.Content
-      ref={ref}
-      className={cn(
-        "fixed inset-x-0 bottom-0 z-50 mt-24 flex h-auto flex-col rounded-t-[10px] border bg-background",
-        className
-      )}
-      {...props}
-    >
-      <div className="mx-auto mt-4 h-2 w-[100px] rounded-full bg-muted" />
-      <div className="grid grid-cols-4 gap-4 px-4">{children}</div>
-      <DrawerFooter>
-        <Button>Submit</Button>
-        <DrawerClose asChild>
-          <Button variant="outline">Cancel</Button>
-        </DrawerClose>
-      </DrawerFooter>
-    </DrawerPrimitive.Content>
-  </DrawerPortal>
+  <>
+    <DrawerPortal>
+      <DrawerOverlay />
+      <DrawerPrimitive.Content
+        ref={ref}
+        className={cn(
+          "fixed inset-x-0 bottom-0 z-50 mt-24 flex h-auto flex-col rounded-t-[10px] border bg-background ",
+          className
+        )}
+        {...props}
+      >
+        <div className="mx-auto mt-4 h-2 w-[100px] rounded-full bg-muted " />
+        <div className="grid lg:grid-cols-4 md:grid-cols-3 sm:grid-cols-2 gap-2 px-4 ">
+          {children}
+        </div>
+        <DrawerFooter>
+          <Button>Checkout</Button>
+          <div className="max-w-max h-fit rounded-lg border-2 border-red-400 p-3">
+            Total Price: $
+            {props.totalprice ? props.totalprice.toFixed(2) : "N/A"}
+          </div>
+          <DrawerClose asChild>
+            <Button variant="outline">Cancel</Button>
+          </DrawerClose>
+        </DrawerFooter>
+      </DrawerPrimitive.Content>
+    </DrawerPortal>
+  </>
 ));
 DrawerContent.displayName = "DrawerContent";
 
@@ -115,7 +125,14 @@ const DrawerDescription = React.forwardRef<
 DrawerDescription.displayName = DrawerPrimitive.Description.displayName;
 
 export {
-  Drawer, DrawerClose,
-  DrawerContent, DrawerDescription, DrawerFooter, DrawerHeader, DrawerOverlay, DrawerPortal, DrawerTitle, DrawerTrigger
+  Drawer,
+  DrawerClose,
+  DrawerContent,
+  DrawerDescription,
+  DrawerFooter,
+  DrawerHeader,
+  DrawerOverlay,
+  DrawerPortal,
+  DrawerTitle,
+  DrawerTrigger,
 };
-
