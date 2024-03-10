@@ -50,15 +50,15 @@ const Home = () => {
           needs.
         </h2>
       </header>
-      <section className="flex md:flex-row flex-col gap-4 items-center md:justify-between">
+      <section className="flex lg:flex-row flex-col gap-4 items-center md:justify-between">
         <div className="flex gap-4 items-center">
           <Cart />
           <SortBy onSortChange={handleSortChange} />
-          <PriceRangeFilter
-            items={products}
-            setFilteredItems={setFilteredProducts}
-          />
         </div>
+        <PriceRangeFilter
+          items={products}
+          setFilteredItems={setFilteredProducts}
+        />
         <SearchBar items={products} setFilteredItems={setFilteredProducts} />
       </section>
       <Separator className="my-7" />
